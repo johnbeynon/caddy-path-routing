@@ -1,4 +1,10 @@
-localhost
+http:// {
 
-reverse_proxy /app1/* http://app1:10000
-reverse_proxy /app2/* http://app2:10000
+    handle_path /app1/* {
+        reverse_proxy http://app1:10000
+    }
+
+    log {
+         output stdout
+    }
+}
