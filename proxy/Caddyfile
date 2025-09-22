@@ -15,6 +15,12 @@ http:// {
         reverse_proxy http://app2:10000
     }
 
+    handle {
+        root * /usr/share/caddy
+        file_server
+        try_files {path} /index.html
+    }
+
     log {
          output stdout
     }
