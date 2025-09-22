@@ -5,9 +5,40 @@
     </head>
     <body>
         <h1 class="text-3xl font-bold">Hello from Caddy!</h1>
-        <ul>
-            <li><a href="/app1">App 1</a></li>
-            <li><a href="/app2">App 2</a></li>
+
+        <h2 class="text-2xl font-semibold">Jump to a proxied service:</h2>
+        <ul class="list-disc pl-5">
+            <li><a class="text-blue-500 hover:underline" href="/app1">App 1</a></li>
+            <li><a class="text-blue-500 hover:underline" href="/app2">App 2</a></li>
         </ul>
+        <code class="block mt-5 p-3 bg-gray-100 border border-gray-300 rounded">
+            http:// {
+
+                redir /app1 /app1/
+                redir /app2 /app2/
+
+                handle_path /app1/* {
+                    reverse_proxy http://app1:10000
+                }
+
+                log {
+                    output stdout
+                }
+
+                handle_path /app2/* {
+                    reverse_proxy http://app2:10000
+                }
+
+                handle {
+                    root * /usr/share/caddy
+                    file_server
+                    try_files {path} /index.html
+                }
+
+                log {
+                    output stdout
+                }
+            }
+        </code>
     </body>
 </html>
