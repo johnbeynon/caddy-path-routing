@@ -1,0 +1,26 @@
+
+services:
+  - type: pserv
+    runtime: node
+    name: app1
+    region: frankfurt
+    plan: starter
+    rootDir: app1
+    buildCommand: npm install
+    startCommand: npm start
+
+  - type: pserv
+    runtime: node
+    name: app2
+    region: frankfurt
+    plan: starter
+    rootDir: app2
+    buildCommand: npm install
+    startCommand: npm start
+
+  - type: web
+    runtime: docker
+    name: proxy
+    region: frankfurt
+    plan: starter
+    dockerfilePath: ./proxy/Dockerfile

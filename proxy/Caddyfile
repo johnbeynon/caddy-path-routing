@@ -1,0 +1,8 @@
+{
+  debug
+  admin off
+  http_port {$PORT}
+}
+
+reverse_proxy /app1/* 127.0.0.1:9005
+reverse_proxy /app2/* 127.0.0.1:9005
