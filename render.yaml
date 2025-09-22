@@ -23,4 +23,5 @@ services:
     name: proxy
     region: frankfurt
     plan: starter
-    dockerfilePath: ./proxy/Dockerfile
+    dockerfilePath: ./Dockerfile
+    rootDir: proxy
