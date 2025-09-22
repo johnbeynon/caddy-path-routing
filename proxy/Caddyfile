@@ -1,2 +1,4 @@
+localhost
+
 reverse_proxy /app1/* app1:10000
 reverse_proxy /app2/* app2:10000
