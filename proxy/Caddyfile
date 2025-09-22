@@ -1,5 +1,8 @@
 http:// {
 
+    redir /app1 /app1/
+    redir /app2 /app2/
+
     handle_path /app1/* {
         reverse_proxy http://app1:10000
     }
