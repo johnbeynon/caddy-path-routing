@@ -7,4 +7,12 @@ http:// {
     log {
          output stdout
     }
+
+    handle_path /app2/* {
+        reverse_proxy http://app2:10000
+    }
+
+    log {
+         output stdout
+    }
 }
